@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Heart, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { API_BASE_URL } from "@/lib/api-config";
 
 interface ProductCardProps {
   id: string;
@@ -59,7 +60,7 @@ export function ProductCard({
         headers["Authorization"] = `Bearer ${token}`;
       }
 
-      let cartUrl = "http://localhost:3000/api/cart";
+      let cartUrl = "${API_BASE_URL}/cart";
       if (!token && guestToken) {
         cartUrl += `?guestToken=${guestToken}`;
       }
@@ -87,7 +88,7 @@ export function ProductCard({
       const cartId = cartData.data.id;
 
       // Add to cart
-      let addUrl = `http://localhost:3000/api/cart/${cartId}/items`;
+      let addUrl = `${API_BASE_URL}/cart/${cartId}/items`;
       if (!token && guestToken) {
         addUrl += `?guestToken=${guestToken}`;
       }
