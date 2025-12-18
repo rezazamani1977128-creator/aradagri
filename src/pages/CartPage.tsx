@@ -86,7 +86,7 @@ export default function CartPage() {
 
       const url = guestToken 
         ? `${API_BASE_URL}/cart?guestToken=${guestToken}`
-        : "${API_BASE_URL}/cart";
+        : `${API_BASE_URL}/cart`;
 
       const response = await fetch(url, { headers });
 

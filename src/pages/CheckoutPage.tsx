@@ -63,7 +63,7 @@ export default function CheckoutPage() {
       const guestToken = localStorage.getItem("guestToken");
       const cartUrl = guestToken 
         ? `${API_BASE_URL}/cart?guestToken=${guestToken}`
-        : "${API_BASE_URL}/cart";
+        : `${API_BASE_URL}/cart`;
       
       const cartResp = await fetch(cartUrl, { headers });
       if (cartResp.ok) {
@@ -85,7 +85,7 @@ export default function CheckoutPage() {
 
       // Fetch addresses if logged in
       if (token) {
-        const addrResp = await fetch("${API_BASE_URL}/address", { headers });
+        const addrResp = await fetch(`${API_BASE_URL}/address`, { headers });
         if (addrResp.ok) {
           const addrData = await addrResp.json();
           if (addrData.success && Array.isArray(addrData.data)) {
